@@ -1,0 +1,18 @@
+<p>Insert fancy header thing here.</p>
+<h1>{{ puzzle.name }}</h1>
+<p>You'd display the problem statement here. Link to a PDF.</p>
+<p>You'd also allow for submissions in here, somehow. Magic.</p>
+
+{% if puzzle.solved %}
+<p>{{ puzzle.sol }}</p>
+{% else %}
+<form action="{% url 'puzzles:submit' puzzle.id %}" method="post">
+{% csrf_token %}
+<input type="text" name="submission" /><br />
+<input type="submit" value="Submit" />
+</form>
+{% endif %}
+
+{% if user.is_authenticated %}
+<a href="/puzzles/logout/">Logout</a><br />
+{% endif %}
