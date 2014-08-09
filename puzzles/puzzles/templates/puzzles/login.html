@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'puzzles/style.css' %}" />
+
+<header class="main-header" role="banner">
+    <img src="/static/puzzles/images/indiana-logo.png" alt="Indiana Droid and the Holy Grail"/>
+</header>
+
+{% if user.is_authenticated %}
+<p>You're already logged in. Did you mean to log out?</p>
+
+<a href="/puzzles/">&#8592; Back to puzzles</a>
+{% else %}
+<h1>LOGIN</h1>
+<form id="login_form" method="post" action="/puzzles/login/">
+    {% csrf_token %}
+    Username: <input type="text" name="username" value="" size="50" /><br />
+    Password: <input type="password" name="password" value="" size="50" /><br />
+    <input type="submit" value="Login" />
+</form>
+
+<a href="/puzzles/">&#8592; Back to puzzles</a>
+{% endif %}

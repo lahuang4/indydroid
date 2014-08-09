@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'puzzles/style.css' %}" />
+
+{% if user.is_authenticated %}
+<div class="logout"><a href="/puzzles/logout/">Logout</a></div>
+{% endif %}
+
+<header class="main-header" role="banner">
+    <img src="/static/puzzles/images/indiana-logo.png" alt="Indiana Droid and the Holy Grail"/>
+</header>
+
+{% if user.is_authenticated %}
+<h1>WELCOME, {{ user.get_profile.team }}!</h1>
+
+<p>Indiana Droid needs your help. Tackle the puzzles below:</p>
+{% if active_puzzles %}
+    <ul>
+    {% for puzzle in active_puzzles %}
+    <li><a href="{% url 'puzzles:detail' puzzle.display_id %}">{{ puzzle.name }}</a>
+    {% if puzzle.solved %} [SOLVED]{% endif %}
+    </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No puzzles are active.</p>
+{% endif %}
+
+{% else %}
+<h1>WELCOME, PLEASE LOG IN.</h1>
+<a href="/puzzles/login/">Login</a>
+<br />
+{% endif %}
+

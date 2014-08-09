@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'puzzles/style.css' %}" />
+
+<div class="logout"><a href="/puzzles/logout/">Logout</a></div>
+
+<header class="main-header" role="banner">
+    <img src="/static/puzzles/images/indiana-logo.png" alt="Indiana Droid and the Holy Grail"/>
+</header>
+
+<h1><a href={{ puzzle.statement }} target="_blank">{{ puzzle.name }}</a></h1>
+
+{% if puzzle.solved %}
+<p>{{ puzzle.sol }}</p>
+{% else %}
+<form action="{% url 'puzzles:submit' puzzle.display_id %}" method="post">
+{% csrf_token %}
+<input type="text" name="submission" /><br />
+<input type="submit" value="Submit" />
+</form>
+{% endif %}
+
+<a href="/puzzles/">&#8592; Back to puzzles</a><br /><br />

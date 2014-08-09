@@ -1,0 +1,34 @@
+/* fonts */
+@font-face {
+	font-family: adventureSubs;
+	src: url(fonts/adventure_subtitles.ttf);
+}
+
+/* link appearance */
+a:link {
+	color: red;
+}
+a:visited {
+	color: red;
+}
+
+/* text appearance */
+li a {
+	text-align: left;
+	color: red;
+}
+h1 {
+	font-family: adventureSubs;
+	font-style: italic;
+}
+body {
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 150%;
+	text-align: center;
+	background: black;
+	color: white;
+}
+.main-header {
+	text-align: center;
+}
