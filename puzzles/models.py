@@ -17,7 +17,7 @@ class Puzzle(models.Model):
     search_fields = ['name', 'sol']
 
     def __unicode__(self):
-        return self.name
+        return self.name + ' | ' + self.team
 
 class Submission(models.Model):
     puzzle = models.ForeignKey(Puzzle)

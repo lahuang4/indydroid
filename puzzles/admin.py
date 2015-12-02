@@ -8,13 +8,13 @@ class SubmissionInline(admin.TabularInline):
 
 class PuzzleAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,                 {'fields': ['name', 'display_id']}),
+        (None,                 {'fields': ['name', 'display_id', 'team']}),
         ('Puzzle information', {'fields': ['statement', 'sol', 'active',
             'solved']}),
         ('Unlocks puzzle',     {'fields': ['next_puzzle']}),
     ]
     inlines = [SubmissionInline]
-    list_display = ('name', 'sol', 'active', 'solved', 'next_puzzle')
+    list_display = ('name', 'team', 'sol', 'active', 'solved', 'next_puzzle')
 
 class UserProfileAdmin(admin.ModelAdmin):
     fieldsets = [
